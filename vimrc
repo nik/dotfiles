@@ -10,23 +10,23 @@ call pathogen#helptags()
 syntax on
 filetype plugin indent on
 
-colorscheme molokai
-
 " For solarized
-" let g:solarized_termcolors=256
-" let g:solarized_contrast= 'high'
-" let g:solarized_visibility= 'high'
-" set background=dark
-" colorscheme solarized
+let g:solarized_termcolors=256
+let g:solarized_contrast= 'high'
+let g:solarized_visibility= 'high'
+set background=dark
+colorscheme solarized
 
 if $term =~ '256color'
   set t_co=256
+  colorscheme molokai
 elseif $term =~ '^xterm$'
   set t_co=256
 endif
 
 set nocursorline                " This fixes a lag issue with ruby syntax highlighting
 set number
+set nowrap
 
 let mapleader=','
 let localmapleader=','
@@ -44,6 +44,7 @@ set undolevels=10000            " number of forgivable mistakes
 set updatecount=100             " write swap file to disk every 100 chars
 set history=2000                " write swap file to disk every 100 chars
 set viminfo=%100,'100,/100,h,\"500,:100,n~/.vim/viminfo
+set gfn=Monaco:h14
 
 " search feature
 set ignorecase " ignore case
@@ -140,3 +141,6 @@ map <Leader>r :w<CR> :call ScreenShellSend("rspec ".@% . ':' . line('.'))<CR>
 map <Leader>e :w<CR> :call ScreenShellSend("cucumber --format=pretty ".@% . ':' . line('.'))<CR>
 map <Leader>b :w<CR> :call ScreenShellSend("break ".@% . ':' . line('.'))<CR>
 nnoremap <silent> <Leader>f :CommandT<CR>
+
+" Toggle GoldenRatio
+" map <Leader>g :GoldenRatioToggle<cr>
